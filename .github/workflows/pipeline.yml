@@ -10,9 +10,9 @@ jobs:
   register-dataset:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v3
-      # - name: Install Dependencies
-      #   run: pip install -r predictive_maintenance_project/deployment/requirements.txt
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: pip install -r predictive_maintenance_project/deployment/requirements.txt
       - name: Verify HF Token
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
