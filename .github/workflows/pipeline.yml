@@ -22,6 +22,7 @@ jobs:
               from huggingface_hub import HfApi
           
               token = os.getenv("HF_TOKEN")
+              print("Token :", token)
               print("Token exists:", token is not None)
               print("Token length:", len(token) if token else 0)
               print("Starts with hf_:", token.startswith("hf_") if token else False)
