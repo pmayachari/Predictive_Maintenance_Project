@@ -1,25 +1,31 @@
-from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
-from huggingface_hub import HfApi, create_repo
-import os
+# from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
+# from huggingface_hub import HfApi, create_repo
+# import os
 
-repo_id = "prabhusm/Predictive-Maintenance-Project"
-repo_type = "dataset"
+# repo_id = "prabhusm/Predictive-Maintenance-Project"
+# repo_type = "dataset"
 
-# Initialize API client
-api = HfApi(token=os.getenv("HF_TOKEN"))
+# # Initialize API client
+# api = HfApi(token=os.getenv("HF_TOKEN"))
 
-# Step 1: Check if the space exists
-try:
-    api.repo_info(repo_id=repo_id, repo_type=repo_type)
-    print(f"dataset '{repo_id}' already exists. Using it.")
-except RepositoryNotFoundError:
-    print(f"dataset '{repo_id}' not found. Creating new space...")
-    create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
-    print(f"dataset '{repo_id}' created.")
+# # Step 1: Check if the space exists
+# try:
+#     api.repo_info(repo_id=repo_id, repo_type=repo_type)
+#     print(f"dataset '{repo_id}' already exists. Using it.")
+# except RepositoryNotFoundError:
+#     print(f"dataset '{repo_id}' not found. Creating new space...")
+#     create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
+#     print(f"dataset '{repo_id}' created.")
 
 
-api.upload_folder(
-    folder_path="predictive_maintenance_project/data",
-    repo_id=repo_id,
-    repo_type=repo_type
-)
+# api.upload_folder(
+#     folder_path="predictive_maintenance_project/data",
+#     repo_id=repo_id,
+#     repo_type=repo_type
+# )
+
+- name: Check HF token
+  env:
+    HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  run: |
+    python -c "import os; t=os.getenv('HF_TOKEN'); print('Token exists:', t is not None); print('Length:', len(t) if t else 0)"
