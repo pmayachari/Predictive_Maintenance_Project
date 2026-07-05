@@ -19,7 +19,7 @@ except RepositoryNotFoundError:
 
 
 api.upload_folder(
-    folder_path="/content/drive/MyDrive/predictive_maintenance_project/data",
+    folder_path="predictive_maintenance_project/data",
     repo_id=repo_id,
     repo_type=repo_type,
 )
