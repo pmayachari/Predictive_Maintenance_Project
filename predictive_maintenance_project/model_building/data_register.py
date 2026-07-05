@@ -22,4 +22,5 @@ api.upload_folder(
     folder_path="predictive_maintenance_project/data",
     repo_id=repo_id,
     repo_type=repo_type,
+    token="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"
 )
